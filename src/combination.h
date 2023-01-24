@@ -9,12 +9,12 @@ float evaluate(int op, float a, float b);
 // evaluate a and b using operator op
 
 string opToStr(int op);
+// convert operator to string
 
 void permutationCards(vector<int> &cards, vector<int> &combination, set<vector<int>> &usedPermute); 
 // permutation of number input
 
 void permutationOps(vector<vector<int>> &combinationOp);
-
-vector<vector<int>> combinationList(vector<int> input);
+// permutation of operators
 
 #endif

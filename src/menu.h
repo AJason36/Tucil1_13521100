@@ -17,7 +17,7 @@ vector<int> userInput();
 vector<int> randomInput();
 // auto generate random 4  cards
 
-void ansToTxt(vector<int> cards, vector<string> solutions);
+void ansToTxt(vector<int> cards, vector<string> solutions, float time);
 // save solutions to file .txt
 
 #endif

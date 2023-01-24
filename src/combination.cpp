@@ -22,6 +22,13 @@ float evaluate(int op, float a, float b){
         return a / b;
     }
 };
+
+/**
+ * @brief return operator to string
+ * 
+ * @param op 
+ * @return string 
+ */
 string opToStr(int op){
     switch (op){
     case 0:
@@ -34,8 +41,9 @@ string opToStr(int op){
         return "/";
     }
 };
+
 /**
- * @brief permutation of input number
+ * @brief permutation of input cards
  * 
  * @param cards 
  * @param combination 
@@ -80,9 +88,4 @@ void permutationOps(vector<vector<int>> &combinationOp){
     }
 }
 
-vector<vector<int>> combinationList(vector<int> input){
-    set<vector<int>> ans;
-    vector<int> combination;
-    permutationCards(input, combination, ans);
-};
 

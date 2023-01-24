@@ -2,7 +2,12 @@
 #include "menu.h"
 #include "combination.h"
 using namespace std;
-
+/**
+ * @brief final solver using three different permutations, returning array of strings solutions
+ * 
+ * @param cards 
+ * @return vector<string> 
+ */
 vector<string> finalSolver(vector<int> cards){
     vector<int> combinationCards;
     vector<vector<int>> combinationOps;

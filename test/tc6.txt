@@ -1,0 +1,7 @@
+Cards: 12 12 1 7 
+4 solutions found!
+( 12 x 12 ) / ( 7 - 1 )
+12 x ( 12 / ( 7 - 1 ))
+( 12 / ( 7 - 1 )) x 12
+12 / (( 7 - 1 ) / 12 )
+Execution time: 939.000 ms

@@ -21,7 +21,12 @@ map<string, int> playableCards{
     {"K",13}
     };
 
-
+/**
+ * @brief result after using brute force algorithm
+ * if the choice is '1' then user manually input their cards, if '2' system will generate randomized cards
+ * 
+ * @param choice 
+ */
 void result(int choice){
     vector<int> cards;
     if (choice==1){
@@ -34,7 +39,7 @@ void result(int choice){
     auto end = chrono::high_resolution_clock::now();
     float executionTime = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-    
+    cout << "==== SOLUTIONS =====" << endl;
     if (ans.size()==0){
         cout << "No Solution found" << endl;
     }else{
@@ -42,43 +47,55 @@ void result(int choice){
         for (auto i=0;i<ans.size();i++){
             cout << ans[i]<<endl;
         }
-        string choice="a";
+        cout << setprecision(3) << fixed;
+        cout << "Execution time: " << executionTime << " ms" << endl;
+        
+        string choice;
         do{
-        cout << "Do you want to save the solutions to file? (y/n)" << endl;
-        getline(cin, choice);
-        if (choice=="y"){
-            ansToTxt(cards, ans);
-        }else if(choice=="n"){
-            cout << "Thanks for using 24Solver"<<endl;
-        }
+            cout << "Do you want to save the solutions to file? (y/n)" << endl<<"Choice: ";
+            getline(cin, choice);
+            if (choice=="y"){
+                ansToTxt(cards, ans, executionTime);
+            }else if(choice=="n"){
+                continue;
+            }else{
+                cout << "invalid input! please input (y/n)" << endl;
+            }
         } while (choice != "y" && choice != "n");
     }
-    cout << setprecision(3) << fixed;
-    cout << "Execution time: " << executionTime << " ms" << endl;
+    
     bool run = true;
     do{
         string choice;
-        cout << "Do you want to play again?(y/n)" << endl;
+        cout << "Do you want to play again?(y/n)" << endl<<"Choice: ";
         getline(cin, choice);
         if (choice=="y"){
-            mainmenu();
+            run = false;
+            mainmenu();                
         }else if(choice=="n"){
             cout << "========== Thanks for using 24Solver =========="<<endl;
             run = false;
+        }else{
+            cout << "invalid input! please input (y/n)" << endl;
         }
     }while(run);
 };
-// if the choice is '1' then user manually input their cards, if '2' system will generate randomized cards
 
+/**
+ * @brief user manually input their cards
+ * 
+ * @return vector<int> 
+ */
 vector<int> userInput(){
     vector<int> finalCards;
     
     bool valid = false;
+    
+    cout << "\n====== INPUT =======" << endl;
     do{
-
         string inputCards;
         printf("Input 4 Cards each separated by space\n"
-            "valid cards: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K \n"
+            "valid cards: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K\n"
             "(example: A 2 3 Q)\n"
             "Input: ");
         getline(cin, inputCards);
@@ -103,15 +120,20 @@ vector<int> userInput(){
             valid = false;
         }
     } while (!valid);
-        
+    printf("\n");
     return finalCards;
 };
-// user manually input their cards
 
+/**
+ * @brief generate random 4 cards
+ * 
+ * @return vector<int> 
+ */
 vector<int> randomInput(){
     vector<int> randCards;
     int random;
-
+    
+    cout << "\n====== RANDOM ======" << endl;
     srand(time(0));
     printf("Generating random cards......\n");
     for (int i = 0; i < 4;i++){
@@ -135,12 +157,18 @@ vector<int> randomInput(){
         }
         i++;
     }
-    printf("\n");
+    printf("\n\n");
     return randCards;
 };
-// auto generate random 4  cards
 
-void ansToTxt(vector<int> cards, vector<string> solutions){
+/**
+ * @brief save solutions to file .txt
+ * 
+ * @param cards 
+ * @param solutions 
+ * @param time 
+ */
+void ansToTxt(vector<int> cards, vector<string> solutions, float time){
     string namafile;
     cout << "Enter your file name: ";
     getline(cin, namafile);
@@ -153,10 +181,15 @@ void ansToTxt(vector<int> cards, vector<string> solutions){
     for (auto i=0;i<solutions.size();i++){
         text << solutions[i]<<endl;
     }
+    text << setprecision(3) << fixed;
+    text << "Execution time: " << time << " ms" << endl;
         
 };
-// save solutions to file .txt
 
+/**
+ * @brief main menu
+ * 
+ */
 void mainmenu(){
     string choice;
     bool valid=false;
@@ -177,7 +210,7 @@ void mainmenu(){
         }else if (choice=="3"){
             valid = true;
             printf("\n"
-                   "Thank you for Using 24Solver\n");
+                   "========== Thanks for using 24Solver ==========\n");
         }else{
             printf("Invalid Input!\n");
         }
