@@ -95,7 +95,7 @@ vector<int> userInput(){
     do{
         string inputCards;
         printf("Input 4 Cards each separated by space\n"
-            "valid cards: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K\n"
+            "Valid cards: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K\n"
             "(example: A 2 3 Q)\n"
             "Input: ");
         getline(cin, inputCards);
@@ -135,7 +135,9 @@ vector<int> randomInput(){
     
     cout << "\n====== RANDOM ======" << endl;
     srand(time(0));
-    printf("Generating random cards......\n");
+    
+    printf("Valid cards: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K\n"
+           "Generating random cards......\n");
     for (int i = 0; i < 4;i++){
         random = rand() % 13 + 1;
         randCards.push_back(random);
